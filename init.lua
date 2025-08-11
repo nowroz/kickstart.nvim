@@ -231,6 +231,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Disable auto-comment newline when 'o' is pressed
 vim.api.nvim_create_autocmd('BufEnter', {
+  desc = 'Disable auto-commenting newline when `o` is pressed',
   callback = function()
     vim.opt.formatoptions:remove 'o'
   end,
