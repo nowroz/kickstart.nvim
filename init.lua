@@ -273,7 +273,27 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
+  {
+    'folke/snacks.nvim',
+    priority = 1000,
+    opts = {
+      explorer = {},
+    },
+    config = function(_, opts)
+      -- Setup Snacks with your opts
+      require('snacks').setup(opts)
 
+      -- Keymap to toggle explorer
+      vim.keymap.set('n', '<leader>e', function()
+        local explorer_pickers = require('snacks.picker').get { source = 'explorer' }
+        if #explorer_pickers == 0 then
+          require('snacks.picker').explorer()
+        else
+          explorer_pickers[1]:close()
+        end
+      end, { desc = 'Toggle Snacks Explorer' })
+    end,
+  },
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
   --    {
