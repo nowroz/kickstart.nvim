@@ -282,13 +282,15 @@ require('lazy').setup({
         },
       }
 
-      local map = vim.keymap.set
+      local map = function(key, func, desc)
+        vim.keymap.set('n', key, func, { noremap = true, silent = true, desc = desc })
+      end
 
       -- Close current buffer
-      map('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true, desc = 'Delete current [B]ufferline' })
+      map('<leader>bd', ':bdelete<CR>', 'Delete current [B]ufferline')
 
       -- Close all buffers except current
-      map('n', '<leader>bD', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', { noremap = true, silent = true, desc = 'Delete other [B]ufferlines' })
+      map('<leader>bD', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', 'Delete other [B]ufferlines')
     end,
   },
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
