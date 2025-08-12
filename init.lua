@@ -268,6 +268,29 @@ require('lazy').setup({
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
   --
+  {
+    'akinsho/bufferline.nvim',
+    version = '*',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('bufferline').setup {
+        options = {
+          -- your bufferline options here, for example:
+          numbers = 'ordinal',
+          diagnostics = 'nvim_lsp',
+          offsets = { { filetype = 'NvimTree', text = 'File Explorer', padding = 1 } },
+        },
+      }
+
+      local map = vim.keymap.set
+
+      -- Close current buffer
+      map('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true, desc = 'Delete current [B]ufferline' })
+
+      -- Close all buffers except current
+      map('n', '<leader>bD', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', { noremap = true, silent = true, desc = 'Delete other [B]ufferlines' })
+    end,
+  },
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
   {
@@ -383,6 +406,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>b', group = '[B]ufferline' },
       },
     },
   },
