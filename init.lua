@@ -268,6 +268,7 @@ require('lazy').setup({
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
   --
+  { 'rcarriga/nvim-notify' },
   {
     'akinsho/bufferline.nvim',
     version = '*',
