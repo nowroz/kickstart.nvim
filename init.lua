@@ -1006,12 +1006,6 @@ require('lazy').setup({
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
 
-      --TODO:
-      --FIXME:
-      --FIX:
-      --WARNING:
-      --HACK:
-      --NOTE:
       local hipatterns = require 'mini.hipatterns'
       hipatterns.setup {
         highlighters = {
