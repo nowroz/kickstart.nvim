@@ -318,6 +318,13 @@ require('lazy').setup({
       map('<leader>bD', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', 'Delete other [B]ufferlines')
     end,
   },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
   {
